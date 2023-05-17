@@ -1,17 +1,14 @@
-# 모르는 클래스
 class CourseRecord:
-    # 생성자
     def __init__(self, course_id, course_name, credit, grade):
         self.course_id = course_id
         self.course_name = course_name
         self.credit = credit
         self.grade = grade
-    
-    # 문자열 특별 메서드
+        
     def __str__(self):
         string = '[' + self.course_name + '] ' + str(self.credit) + '학점: ' + self.grade
         return string
-    
+        
     @classmethod
     def get_gpa_score(cls, gpa):
         match gpa:
@@ -34,10 +31,7 @@ class CourseRecord:
             case 'F':
                 return 0
 
-            
-# 수강목록 클래스
 class CourseHistory:
-    # 생성자
     def __init__(self):
         self.history = []
         self.course_id_map = {'id': 10000}
@@ -88,6 +82,7 @@ class CourseHistory:
         course_record = CourseRecord(course_id, course_name, credit, gpa)
         self.history.append(course_record)
         
+        print('입력되었습니다.')
 
     # 출력 함수
     def print_process(self):
@@ -142,14 +137,7 @@ while True:
     
     # 입력값별 작업
     if user_input == '1':
-        try:
-            course_history.input_process()
-        except Exception as exception:
-            print('[' + type(exception).__name__ + '] 오류가 발생했습니다: ' + str(exception))
-        else:
-            print('입력되었습니다.')
-        finally:
-            print('')
+        course_history.input_process()
         
     elif user_input == '2':
         course_history.print_process()
